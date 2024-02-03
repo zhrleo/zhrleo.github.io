@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>测试博客</title>
+    <link href="/2024/02/03/%E6%B5%8B%E8%AF%95%E5%8D%9A%E5%AE%A2/"/>
+    <url>/2024/02/03/%E6%B5%8B%E8%AF%95%E5%8D%9A%E5%AE%A2/</url>
+    
+    <content type="html"><![CDATA[<hr><h2 id="title-测试博客date-2023-12-21-00-06-21tags-test"><a href="#title-测试博客date-2023-12-21-00-06-21tags-test" class="headerlink" title="title: 测试博客date: 2023-12-21 00:06:21tags: test"></a>title: 测试博客<br>date: 2023-12-21 00:06:21<br>tags: test</h2><p class="note note-primary">primary</p><p class="note note-secondary">secondary</p><p class="note note-success">success</p><p class="note note-danger">danger</p><p class="note note-warning">warning</p><p class="note note-info">info</p><p class="note note-lights">lights</p><p><span class="label label-primary">primary</span><span class="label label-default">default</span><span class="label label-info">info</span><span class="label label-success">success</span><span class="label label-warning">warning</span><span class="label label-danger">danger</span></p>    <div class="fold">      <div class="fold-title fold-info collapsed" data-toggle="collapse" href="#collapse-b5714680" role="button" aria-expanded="false" aria-controls="collapse-b5714680">        <div class="fold-arrow">▶</div>title      </div>      <div class="fold-collapse collapse" id="collapse-b5714680">        <div class="fold-content">          <p>需要折叠的一段内容，支持 markdown</p>        </div>      </div>    </div>            <input type="checkbox"  checked="checked">勾选框          <p><a class="btn" href="https://zhrleo.github.io" title="zhrleo">按钮</a></p><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="https://cdn.luogu.com.cn/upload/image_hosting/aoi263ym.png"></div><div class="group-image-wrap"><img src="https://cdn.luogu.com.cn/upload/image_hosting/aoi263ym.png"></div><div class="group-image-wrap"><img src="https://cdn.luogu.com.cn/upload/image_hosting/aoi263ym.png"></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="https://cdn.luogu.com.cn/upload/image_hosting/aoi263ym.png"></div><div class="group-image-wrap"><img src="https://cdn.luogu.com.cn/upload/image_hosting/aoi263ym.png"></div></div></div><pre><code class="mermaid">classDiagramClass01 &lt;|-- AveryLongClass : CoolClass03 *-- Class04Class05 o-- Class06Class07 .. Class08Class09 --&gt; C2 : Where am i?Class09 --* C3Class09 --|&gt; Class07Class07 : equals()Class07 : Object[] elementDataClass01 : size()Class01 : int chimpClass01 : int gorillaClass08 &lt;--&gt; C2: Cool label</code></pre>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/2024/02/02/hello-world/"/>
     <url>/2024/02/02/hello-world/</url>
