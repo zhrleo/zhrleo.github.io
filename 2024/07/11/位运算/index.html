@@ -16,24 +16,24 @@
   <meta name="author" content="zhrleo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="枚举，就是列举所有情况，最终得出答案。 例题洛谷P1085 [NOIP2004 普及组] 不高兴的津津 枚举一周的每一天打擂台即可。 123456789101112131415#include &lt;bits&#x2F;stdc++.h&gt;using namespace std;int x, y, maxn &#x3D; 8, day;int main(int argc, char const *argv[])">
+    <meta name="description" content="根据计算机的存储方式，一般的高级语言中会提供位运算。 位运算的内容   运算名称 运算符号 运算规则 示例    与运算 &amp; 1&amp;0&#x3D;0,0&amp;1&#x3D;0,0&amp;0&#x3D;0,1&amp;1&#x3D;1 $4&amp;5&#x3D;(100)_2&amp;(101)_2&#x3D;1$   或运算 | 1|0&#x3D;1,0|1&#x3D;1,0">
 <meta property="og:type" content="article">
-<meta property="og:title" content="枚举">
-<meta property="og:url" content="http://example.com/2024/02/21/%E6%9E%9A%E4%B8%BE/index.html">
+<meta property="og:title" content="位运算">
+<meta property="og:url" content="http://example.com/2024/07/11/%E4%BD%8D%E8%BF%90%E7%AE%97/index.html">
 <meta property="og:site_name" content="zhrleo&#39;s blog">
-<meta property="og:description" content="枚举，就是列举所有情况，最终得出答案。 例题洛谷P1085 [NOIP2004 普及组] 不高兴的津津 枚举一周的每一天打擂台即可。 123456789101112131415#include &lt;bits&#x2F;stdc++.h&gt;using namespace std;int x, y, maxn &#x3D; 8, day;int main(int argc, char const *argv[])">
+<meta property="og:description" content="根据计算机的存储方式，一般的高级语言中会提供位运算。 位运算的内容   运算名称 运算符号 运算规则 示例    与运算 &amp; 1&amp;0&#x3D;0,0&amp;1&#x3D;0,0&amp;0&#x3D;0,1&amp;1&#x3D;1 $4&amp;5&#x3D;(100)_2&amp;(101)_2&#x3D;1$   或运算 | 1|0&#x3D;1,0|1&#x3D;1,0">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-02-21T06:50:41.000Z">
-<meta property="article:modified_time" content="2024-02-21T06:52:37.412Z">
+<meta property="article:published_time" content="2024-07-11T07:05:24.000Z">
+<meta property="article:modified_time" content="2024-07-11T09:02:03.659Z">
 <meta property="article:author" content="zhrleo">
-<meta property="article:tag" content="算法笔记">
+<meta property="article:tag" content="数学笔记">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>枚举 - zhrleo&#39;s blog</title>
+  <title>位运算 - zhrleo&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="枚举"></span>
+            <span id="subtitle" data-typed-text="位运算"></span>
           
         </div>
 
@@ -227,8 +227,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-02-21 14:50" pubdate>
-          2024年2月21日 下午
+        <time datetime="2024-07-11 15:05" pubdate>
+          2024年7月11日 下午
         </time>
       </span>
     
@@ -239,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          97 字
+          657 字
         
       </span>
     
@@ -250,7 +250,7 @@
         
         
         
-          1 分钟
+          6 分钟
         
       </span>
     
@@ -295,12 +295,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">枚举</h1>
+            <h1 id="seo-header">位运算</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-02-21T14:52:37+08:00
+                    本文最后更新于 2024-07-11T17:02:03+08:00
                   
                   
 
@@ -310,10 +310,102 @@
             
               <div class="markdown-body">
                 
-                <p>枚举，就是列举所有情况，最终得出答案。</p>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1085">洛谷P1085 [NOIP2004 普及组] 不高兴的津津</a></p>
-<p>枚举一周的每一天打擂台即可。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> x, y, maxn = <span class="hljs-number">8</span>, day;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> <span class="hljs-type">const</span> *argv[])</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">8</span>; i++)<br>	&#123;<br>		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;x, &amp;y);<br>		<span class="hljs-keyword">if</span> (x + y &gt; maxn)<br>			maxn = x + y, day = i;<br>	&#125;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>, day);<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+                <p>根据计算机的存储方式，一般的高级语言中会提供位运算。</p>
+<h1 id="位运算的内容"><a href="#位运算的内容" class="headerlink" title="位运算的内容"></a>位运算的内容</h1><table>
+<thead>
+<tr>
+<th align="center">运算名称</th>
+<th align="center">运算符号</th>
+<th align="center">运算规则</th>
+<th align="center">示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">与运算</td>
+<td align="center">&amp;</td>
+<td align="center">1&amp;0&#x3D;0,0&amp;1&#x3D;0,0&amp;0&#x3D;0,1&amp;1&#x3D;1</td>
+<td align="center">$4&amp;5&#x3D;(100)_2&amp;(101)_2&#x3D;1$</td>
+</tr>
+<tr>
+<td align="center">或运算</td>
+<td align="center">|</td>
+<td align="center">1|0&#x3D;1,0|1&#x3D;1,0|0&#x3D;0,1|1&#x3D;1</td>
+<td align="center">$1|4&#x3D;(001)_2|(100)_2&#x3D;(101)_2&#x3D;5$</td>
+</tr>
+<tr>
+<td align="center">异或运算</td>
+<td align="center">^</td>
+<td align="center">1^0&#x3D;1,0^1&#x3D;1,0^0&#x3D;0,1^1&#x3D;0</td>
+<td align="center">$1|9&#x3D;(0001)_2|(1001)_2&#x3D;(1000)_2&#x3D;8$</td>
+</tr>
+<tr>
+<td align="center">左移运算</td>
+<td align="center">&lt;&lt;</td>
+<td align="center">a&lt;&lt;b表示在二进制下的a的右端添加b个0</td>
+<td align="center">$1&lt;&lt;9&#x3D;(1000000000)_2&#x3D;256$</td>
+</tr>
+<tr>
+<td align="center">右移运算</td>
+<td align="center">&gt;&gt;</td>
+<td align="center">a&gt;&gt;b表示在二进制下的a从右端开始去除b个数</td>
+<td align="center">$8&gt;&gt;&#x3D;(1000)_2&gt;&gt;1&#x3D;(100)_2&#x3D;4$</td>
+</tr>
+<tr>
+<td align="center">取反运算</td>
+<td align="center">~</td>
+<td align="center">~a表示将a中的0变成1,1变成0</td>
+<td align="center">$~(10)&#x3D;~(1010)_2&#x3D;(0101)_2&#x3D;5$</td>
+</tr>
+</tbody></table>
+
+    <div class="fold">
+      <div class="fold-title fold-warning collapsed" data-toggle="collapse" href="#collapse-ddac42b8" role="button" aria-expanded="false" aria-controls="collapse-ddac42b8">
+        <div class="fold-arrow">▶</div>注意事项
+      </div>
+      <div class="fold-collapse collapse" id="collapse-ddac42b8">
+        <div class="fold-content">
+          <ul><li>位运算都是用补码进行的；</li><li>数字在计算机中的存储包括符号位（正数为0，负数为1,0分正负）和后面的数字位；</li><li>数字的原码、反码、补码：</li><li><ul><li>正数的原码、反码、补码相同，均为符号位拼上该数的二进制表示；</li></ul></li><li><ul><li>负数的符号位为1，原码需拼上该数绝对值的二进制，反码需拼上该数绝对值的二进制取反后的结果，补码为反码+1；</li></ul></li><li><ul><li>当一个正数超过它的数据类型可存储的上限时，会占据符号位，这就是数据上溢的原因；</li></ul></li><li><ul><li>当一个负数超过它的数据类型可存储的下限时，由反码转化为补码时会进位至符号位使符号位由1变成0，这就是数据下溢的原因。</li></ul></li></ul>
+        </div>
+      </div>
+    </div>
+
+<h1 id="位运算的应用"><a href="#位运算的应用" class="headerlink" title="位运算的应用"></a>位运算的应用</h1><h2 id="二进制下的集合操作"><a href="#二进制下的集合操作" class="headerlink" title="二进制下的集合操作"></a>二进制下的集合操作</h2><p>用1表示开关开，0表示开关关，我们就可以用二进制来表示集合，用位运算来表示集合运算，这样我们就可以用一个数来表示压位DP的状态了。</p>
+<table>
+<thead>
+<tr>
+<th align="center">集合运算</th>
+<th align="center">位运算</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$a\cup b$</td>
+<td align="center">a|b</td>
+</tr>
+<tr>
+<td align="center">$a\cap b$</td>
+<td align="center">a|b</td>
+</tr>
+<tr>
+<td align="center">$\overline{a}$</td>
+<td align="center">a|b</td>
+</tr>
+<tr>
+<td align="center">$a\backslash b$</td>
+<td align="center">a|b</td>
+</tr>
+<tr>
+<td align="center">$a\Delta b$</td>
+<td align="center">a|b</td>
+</tr>
+</tbody></table>
+<h2 id="其他运算操作"><a href="#其他运算操作" class="headerlink" title="其他运算操作"></a>其他运算操作</h2><p>$a\cdot2^b$:<code>a&lt;&lt;b</code></p>
+<p>$\left\lfloor \frac{a}{2^b} \right\rfloor$:<code>a&lt;&lt;b</code></p>
+<p>取绝对值：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">Abs</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> (x^(x&gt;&gt;<span class="hljs-number">31</span>))-(x&gt;&gt;<span class="hljs-number">31</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>取最值：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">Max</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> (b&amp;(a-b&gt;&gt;<span class="hljs-number">31</span>))|(a&amp;(~(a-b)&gt;&gt;<span class="hljs-number">31</span>));<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">Min</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> (a&amp;(a-b&gt;&gt;<span class="hljs-number">31</span>))|(b&amp;(~(a-b)&gt;&gt;<span class="hljs-number">31</span>));<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>a与b同号：<code>(a^b)&gt;=0</code></p>
+
                 
               </div>
             
@@ -325,7 +417,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="print-no-link">#算法笔记</a>
+        <a href="/tags/%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0/" class="print-no-link">#数学笔记</a>
       
     </div>
   
@@ -337,8 +429,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>枚举</div>
-      <div>http://example.com/2024/02/21/枚举/</div>
+      <div>位运算</div>
+      <div>http://example.com/2024/07/11/位运算/</div>
     </div>
     <div class="license-meta">
       
@@ -350,7 +442,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年2月21日</div>
+          <div>2024年7月11日</div>
         </div>
       
       
@@ -382,18 +474,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/11/%E8%BF%9B%E4%BD%8D%E5%88%B6/" title="进位制">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">进位制</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/02/21/%E6%A8%A1%E6%8B%9F/" title="模拟">
-                        <span class="hidden-mobile">模拟</span>
+                      <a href="/2024/07/11/%E8%BF%9B%E4%BD%8D%E5%88%B6/" title="进位制">
+                        <span class="hidden-mobile">进位制</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>位运算</title>
+    <link href="/2024/07/11/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+    <url>/2024/07/11/%E4%BD%8D%E8%BF%90%E7%AE%97/</url>
+    
+    <content type="html"><![CDATA[<p>根据计算机的存储方式，一般的高级语言中会提供位运算。</p><h1 id="位运算的内容"><a href="#位运算的内容" class="headerlink" title="位运算的内容"></a>位运算的内容</h1><table><thead><tr><th align="center">运算名称</th><th align="center">运算符号</th><th align="center">运算规则</th><th align="center">示例</th></tr></thead><tbody><tr><td align="center">与运算</td><td align="center">&amp;</td><td align="center">1&amp;0&#x3D;0,0&amp;1&#x3D;0,0&amp;0&#x3D;0,1&amp;1&#x3D;1</td><td align="center">$4&amp;5&#x3D;(100)_2&amp;(101)_2&#x3D;1$</td></tr><tr><td align="center">或运算</td><td align="center">|</td><td align="center">1|0&#x3D;1,0|1&#x3D;1,0|0&#x3D;0,1|1&#x3D;1</td><td align="center">$1|4&#x3D;(001)_2|(100)_2&#x3D;(101)_2&#x3D;5$</td></tr><tr><td align="center">异或运算</td><td align="center">^</td><td align="center">1^0&#x3D;1,0^1&#x3D;1,0^0&#x3D;0,1^1&#x3D;0</td><td align="center">$1|9&#x3D;(0001)_2|(1001)_2&#x3D;(1000)_2&#x3D;8$</td></tr><tr><td align="center">左移运算</td><td align="center">&lt;&lt;</td><td align="center">a&lt;&lt;b表示在二进制下的a的右端添加b个0</td><td align="center">$1&lt;&lt;9&#x3D;(1000000000)_2&#x3D;256$</td></tr><tr><td align="center">右移运算</td><td align="center">&gt;&gt;</td><td align="center">a&gt;&gt;b表示在二进制下的a从右端开始去除b个数</td><td align="center">$8&gt;&gt;&#x3D;(1000)_2&gt;&gt;1&#x3D;(100)_2&#x3D;4$</td></tr><tr><td align="center">取反运算</td><td align="center">~</td><td align="center">~a表示将a中的0变成1,1变成0</td><td align="center">$~(10)&#x3D;~(1010)_2&#x3D;(0101)_2&#x3D;5$</td></tr></tbody></table>    <div class="fold">      <div class="fold-title fold-warning collapsed" data-toggle="collapse" href="#collapse-ddac42b8" role="button" aria-expanded="false" aria-controls="collapse-ddac42b8">        <div class="fold-arrow">▶</div>注意事项      </div>      <div class="fold-collapse collapse" id="collapse-ddac42b8">        <div class="fold-content">          <ul><li>位运算都是用补码进行的；</li><li>数字在计算机中的存储包括符号位（正数为0，负数为1,0分正负）和后面的数字位；</li><li>数字的原码、反码、补码：</li><li><ul><li>正数的原码、反码、补码相同，均为符号位拼上该数的二进制表示；</li></ul></li><li><ul><li>负数的符号位为1，原码需拼上该数绝对值的二进制，反码需拼上该数绝对值的二进制取反后的结果，补码为反码+1；</li></ul></li><li><ul><li>当一个正数超过它的数据类型可存储的上限时，会占据符号位，这就是数据上溢的原因；</li></ul></li><li><ul><li>当一个负数超过它的数据类型可存储的下限时，由反码转化为补码时会进位至符号位使符号位由1变成0，这就是数据下溢的原因。</li></ul></li></ul>        </div>      </div>    </div><h1 id="位运算的应用"><a href="#位运算的应用" class="headerlink" title="位运算的应用"></a>位运算的应用</h1><h2 id="二进制下的集合操作"><a href="#二进制下的集合操作" class="headerlink" title="二进制下的集合操作"></a>二进制下的集合操作</h2><p>用1表示开关开，0表示开关关，我们就可以用二进制来表示集合，用位运算来表示集合运算，这样我们就可以用一个数来表示压位DP的状态了。</p><table><thead><tr><th align="center">集合运算</th><th align="center">位运算</th></tr></thead><tbody><tr><td align="center">$a\cup b$</td><td align="center">a|b</td></tr><tr><td align="center">$a\cap b$</td><td align="center">a|b</td></tr><tr><td align="center">$\overline{a}$</td><td align="center">a|b</td></tr><tr><td align="center">$a\backslash b$</td><td align="center">a|b</td></tr><tr><td align="center">$a\Delta b$</td><td align="center">a|b</td></tr></tbody></table><h2 id="其他运算操作"><a href="#其他运算操作" class="headerlink" title="其他运算操作"></a>其他运算操作</h2><p>$a\cdot2^b$:<code>a&lt;&lt;b</code></p><p>$\left\lfloor \frac{a}{2^b} \right\rfloor$:<code>a&lt;&lt;b</code></p><p>取绝对值：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">Abs</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> (x^(x&gt;&gt;<span class="hljs-number">31</span>))-(x&gt;&gt;<span class="hljs-number">31</span>);<br>&#125;<br></code></pre></td></tr></table></figure><p>取最值：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">Max</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> (b&amp;(a-b&gt;&gt;<span class="hljs-number">31</span>))|(a&amp;(~(a-b)&gt;&gt;<span class="hljs-number">31</span>));<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">Min</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> (a&amp;(a-b&gt;&gt;<span class="hljs-number">31</span>))|(b&amp;(~(a-b)&gt;&gt;<span class="hljs-number">31</span>));<br>&#125;<br></code></pre></td></tr></table></figure><p>a与b同号：<code>(a^b)&gt;=0</code></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>数学笔记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>进位制</title>
+    <link href="/2024/07/11/%E8%BF%9B%E4%BD%8D%E5%88%B6/"/>
+    <url>/2024/07/11/%E8%BF%9B%E4%BD%8D%E5%88%B6/</url>
+    
+    <content type="html"><![CDATA[<h2 id="进位制的历史"><a href="#进位制的历史" class="headerlink" title="进位制的历史"></a>进位制的历史</h2><p>从人类出现文明，开始生产时，计数的方式就成为一个不可或缺的工具。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>数学笔记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>枚举</title>
     <link href="/2024/02/21/%E6%9E%9A%E4%B8%BE/"/>
     <url>/2024/02/21/%E6%9E%9A%E4%B8%BE/</url>

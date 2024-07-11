@@ -16,24 +16,24 @@
   <meta name="author" content="zhrleo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="枚举，就是列举所有情况，最终得出答案。 例题洛谷P1085 [NOIP2004 普及组] 不高兴的津津 枚举一周的每一天打擂台即可。 123456789101112131415#include &lt;bits&#x2F;stdc++.h&gt;using namespace std;int x, y, maxn &#x3D; 8, day;int main(int argc, char const *argv[])">
+    <meta name="description" content="进位制的历史从人类出现文明，开始生产时，计数的方式就成为一个不可或缺的工具。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="枚举">
-<meta property="og:url" content="http://example.com/2024/02/21/%E6%9E%9A%E4%B8%BE/index.html">
+<meta property="og:title" content="进位制">
+<meta property="og:url" content="http://example.com/2024/07/11/%E8%BF%9B%E4%BD%8D%E5%88%B6/index.html">
 <meta property="og:site_name" content="zhrleo&#39;s blog">
-<meta property="og:description" content="枚举，就是列举所有情况，最终得出答案。 例题洛谷P1085 [NOIP2004 普及组] 不高兴的津津 枚举一周的每一天打擂台即可。 123456789101112131415#include &lt;bits&#x2F;stdc++.h&gt;using namespace std;int x, y, maxn &#x3D; 8, day;int main(int argc, char const *argv[])">
+<meta property="og:description" content="进位制的历史从人类出现文明，开始生产时，计数的方式就成为一个不可或缺的工具。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-02-21T06:50:41.000Z">
-<meta property="article:modified_time" content="2024-02-21T06:52:37.412Z">
+<meta property="article:published_time" content="2024-07-11T06:06:11.000Z">
+<meta property="article:modified_time" content="2024-07-11T06:11:29.681Z">
 <meta property="article:author" content="zhrleo">
-<meta property="article:tag" content="算法笔记">
+<meta property="article:tag" content="数学笔记">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>枚举 - zhrleo&#39;s blog</title>
+  <title>进位制 - zhrleo&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="枚举"></span>
+            <span id="subtitle" data-typed-text="进位制"></span>
           
         </div>
 
@@ -227,8 +227,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-02-21 14:50" pubdate>
-          2024年2月21日 下午
+        <time datetime="2024-07-11 14:06" pubdate>
+          2024年7月11日 下午
         </time>
       </span>
     
@@ -239,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          97 字
+          35 字
         
       </span>
     
@@ -295,12 +295,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">枚举</h1>
+            <h1 id="seo-header">进位制</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-02-21T14:52:37+08:00
+                    本文最后更新于 2024-07-11T14:11:29+08:00
                   
                   
 
@@ -310,10 +310,8 @@
             
               <div class="markdown-body">
                 
-                <p>枚举，就是列举所有情况，最终得出答案。</p>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P1085">洛谷P1085 [NOIP2004 普及组] 不高兴的津津</a></p>
-<p>枚举一周的每一天打擂台即可。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> x, y, maxn = <span class="hljs-number">8</span>, day;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> <span class="hljs-type">const</span> *argv[])</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; <span class="hljs-number">8</span>; i++)<br>	&#123;<br>		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>, &amp;x, &amp;y);<br>		<span class="hljs-keyword">if</span> (x + y &gt; maxn)<br>			maxn = x + y, day = i;<br>	&#125;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>, day);<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+                <h2 id="进位制的历史"><a href="#进位制的历史" class="headerlink" title="进位制的历史"></a>进位制的历史</h2><p>从人类出现文明，开始生产时，计数的方式就成为一个不可或缺的工具。</p>
+
                 
               </div>
             
@@ -325,7 +323,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="print-no-link">#算法笔记</a>
+        <a href="/tags/%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0/" class="print-no-link">#数学笔记</a>
       
     </div>
   
@@ -337,8 +335,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>枚举</div>
-      <div>http://example.com/2024/02/21/枚举/</div>
+      <div>进位制</div>
+      <div>http://example.com/2024/07/11/进位制/</div>
     </div>
     <div class="license-meta">
       
@@ -350,7 +348,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年2月21日</div>
+          <div>2024年7月11日</div>
         </div>
       
       
@@ -382,9 +380,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/11/%E8%BF%9B%E4%BD%8D%E5%88%B6/" title="进位制">
+                      <a href="/2024/07/11/%E4%BD%8D%E8%BF%90%E7%AE%97/" title="位运算">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">进位制</span>
+                        <span class="hidden-mobile">位运算</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -392,8 +390,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/02/21/%E6%A8%A1%E6%8B%9F/" title="模拟">
-                        <span class="hidden-mobile">模拟</span>
+                      <a href="/2024/02/21/%E6%9E%9A%E4%B8%BE/" title="枚举">
+                        <span class="hidden-mobile">枚举</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
