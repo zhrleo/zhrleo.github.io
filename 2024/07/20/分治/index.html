@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/vu21gmm7.png">
 <meta property="article:published_time" content="2024-07-20T05:17:22.000Z">
-<meta property="article:modified_time" content="2024-07-20T09:54:04.178Z">
+<meta property="article:modified_time" content="2024-07-30T06:25:27.798Z">
 <meta property="article:author" content="zhrleo">
 <meta property="article:tag" content="算法笔记">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          1.8k 字
         
       </span>
     
@@ -302,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-07-20T17:54:04+08:00
+                    本文最后更新于 2024-07-30T14:25:27+08:00
                   
                   
 
@@ -336,7 +336,7 @@
 <p>例题：<a class="btn" target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3396" title="P1873 [P3396 哈希冲突">P3396 哈希冲突</a></p>
 <p>这道题如果使用暴力的话，每次询问的时间复杂度为O(n)，修改的时间复杂度为O(1)。</p>
 <p>这题暴力比较快速，但是多组数据有弥补了这一部分，但是如果询问次数达到本题的数据规模的话，就会显得时间有点超，所以建议在做本题时，先使用预处理。<a class="btn" target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Yz42117vf/?vd_source=ed7dbb8e1185f9737aad12a73207198e" title="手动狗头">原版</a></p>
-<p>我们考虑预处理$f(i,j)&#x3D;\sum_{x\in{a}}^{x\equiv j(\mod{i})}x$，则我们可以得出递推式：<br>$$<br>f(i,j\mod{i})&#x3D;\sum_{i&#x3D;1}^{n}a_j<br>$$<br>时间复杂度为$O(n^2)$，超得更厉害了。</p>
+<p>我们考虑预处理$\operatorname{f}(i,j)&#x3D;\sum_{x\in{a}}^{x\equiv j(\mod{i})}x$，则我们可以得出递推式：<br>$$<br>\operatorname{f}(i,j\mod{i})&#x3D;\sum_{i&#x3D;1}^{n}a_j<br>$$<br>时间复杂度为$O(n^2)$，超得更厉害了。</p>
 <p>那我们就没办法了吗？</p>
 <p>我们刚才所说的询问的时间复杂度其实是最差时间复杂度。如果我们更精确地计算的话，其实时间复杂度是$O(\frac{n}{y})$。可见决定循环次数的其实是模数y，当模数y过小时，就会超时。</p>
 <p>我们不妨将所有小于等于$\sqrt{n}$的y全部预处理，其他的y值则采用暴力，那么预处理的时间复杂度为$O(n\sqrt{n})$,查询和修改的时间复杂度均为$O(\sqrt{n})$，就可以完美地AC这道题。</p>
@@ -418,6 +418,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/07/23/%E9%80%92%E6%8E%A8/" title="递推">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">递推</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
