@@ -16,24 +16,23 @@
   <meta name="author" content="zhrleo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="图论是数学的一个重要分支，许多问题都可以抽象成图进而解决。 图的基本概念图：图是一个二元组，即G&#x3D;(V,E)，其中V为点集，我们称V中的每一个元素为顶点或结点，简称点；E为连接节点之间边的集合，称为边集。 有限图：V,E均为有限集时的图 无限图：V或E为有限集时的图 无向图：E中的每一个元素均为无序二元组(u,v)，称作无向边，简称边，其中$u,v\in V$。设e&#x3D;(u,v)">
+    <meta name="description" content="区间DP指的是设计的状态一般与区间端点有关，并且在状态转移时出现区间合并的问题。本博客将通过例题10147. 「一本通 5.1 例 1」石子合并来讲解区间DP。 题解设$\operatorname{f}(i,j)$表示将区间[i,j]之间的石子堆合并到一起的最大得分。 那么显然可以得到状态转移方程：$$\operatorname{f}(i,j)&#x3D;\max{\operatorname{f}">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图论基础">
-<meta property="og:url" content="http://example.com/2024/07/30/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:title" content="区间DP">
+<meta property="og:url" content="http://example.com/2024/07/30/%E5%8C%BA%E9%97%B4DP/index.html">
 <meta property="og:site_name" content="zhrleo&#39;s blog">
-<meta property="og:description" content="图论是数学的一个重要分支，许多问题都可以抽象成图进而解决。 图的基本概念图：图是一个二元组，即G&#x3D;(V,E)，其中V为点集，我们称V中的每一个元素为顶点或结点，简称点；E为连接节点之间边的集合，称为边集。 有限图：V,E均为有限集时的图 无限图：V或E为有限集时的图 无向图：E中的每一个元素均为无序二元组(u,v)，称作无向边，简称边，其中$u,v\in V$。设e&#x3D;(u,v)">
+<meta property="og:description" content="区间DP指的是设计的状态一般与区间端点有关，并且在状态转移时出现区间合并的问题。本博客将通过例题10147. 「一本通 5.1 例 1」石子合并来讲解区间DP。 题解设$\operatorname{f}(i,j)$表示将区间[i,j]之间的石子堆合并到一起的最大得分。 那么显然可以得到状态转移方程：$$\operatorname{f}(i,j)&#x3D;\max{\operatorname{f}">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-07-30T05:44:17.000Z">
-<meta property="article:modified_time" content="2024-07-30T06:24:24.601Z">
+<meta property="article:published_time" content="2024-07-30T07:38:23.000Z">
+<meta property="article:modified_time" content="2024-07-30T08:57:59.098Z">
 <meta property="article:author" content="zhrleo">
-<meta property="article:tag" content="图论笔记">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>图论基础 - zhrleo&#39;s blog</title>
+  <title>区间DP - zhrleo&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +210,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="图论基础"></span>
+            <span id="subtitle" data-typed-text="区间DP"></span>
           
         </div>
 
@@ -227,7 +226,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-30 13:44" pubdate>
+        <time datetime="2024-07-30 15:38" pubdate>
           2024年7月30日 下午
         </time>
       </span>
@@ -239,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          327 字
+          616 字
         
       </span>
     
@@ -250,7 +249,7 @@
         
         
         
-          3 分钟
+          6 分钟
         
       </span>
     
@@ -295,12 +294,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">图论基础</h1>
+            <h1 id="seo-header">区间DP</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-07-30T14:24:24+08:00
+                    本文最后更新于 2024-07-30T16:57:59+08:00
                   
                   
 
@@ -310,16 +309,18 @@
             
               <div class="markdown-body">
                 
-                <p>图论是数学的一个重要分支，许多问题都可以抽象成图进而解决。</p>
-<h1 id="图的基本概念"><a href="#图的基本概念" class="headerlink" title="图的基本概念"></a>图的基本概念</h1><p><strong>图</strong>：图是一个二元组，即G&#x3D;(V,E)，其中V为<strong>点集</strong>，我们称V中的每一个元素为<strong>顶点</strong>或<strong>结点</strong>，简称<strong>点</strong>；E为连接节点之间边的集合，称为<strong>边集</strong>。</p>
-<p><strong>有限图</strong>：V,E均为有限集时的图</p>
-<p><strong>无限图</strong>：V或E为有限集时的图</p>
-<p><strong>无向图</strong>：E中的每一个元素均为无序二元组(u,v)，称作<strong>无向边</strong>，简称<strong>边</strong>，其中$u,v\in V$。设e&#x3D;(u,v)，则u，v称为e的<strong>端点</strong>。</p>
-<p><strong>有向图</strong>：E中的每一个元素均为有序二元组(u,v)，有时也写作$u\to v$，称作<strong>有向边</strong>或<strong>弧</strong>，在不会产生歧义的情况下也可以称为<strong>边</strong>。设$e&#x3D;u\to v$，则称u为e的<strong>起点</strong>，v为e的<strong>终点</strong>，起点和终点称为e的<strong>端点</strong>。此时u为v的直接前驱，v为u的直接后继。</p>
-<p><strong>混合图</strong>：既有有向边，又有无向边的图</p>
-<p><strong>赋权图</strong>：图的每一条边都被赋予一个数作为该边的权的图。特别地，当每一条边的边权均为正数是，这个图被称为<strong>正权图</strong>。</p>
-<p>阶：图中的点数$\operatorname{card}V$。</p>
+                <p>区间DP指的是设计的状态一般与区间端点有关，并且在状态转移时出现区间合并的问题。本博客将通过例题<a class="btn" target="_blank" rel="noopener" href="https://loj.ac/problem/10147" title="10147. 「一本通 5.1 例 1」石子合并">10147. 「一本通 5.1 例 1」石子合并</a>来讲解区间DP。</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>设$\operatorname{f}(i,j)$表示将区间[i,j]之间的石子堆合并到一起的最大得分。</p>
+<p>那么显然可以得到状态转移方程：<br>$$<br>\operatorname{f}(i,j)&#x3D;\max{\operatorname{f}(i,k)+\operatorname{f}(k+1,j)+\sum_{t&#x3D;i}^ja_t|i\leq k&lt;j}<br>$$<br>其中$a_i$是第i堆石子的数量</p>
+<p>当然，这个方程的时间复杂度为$O(n^4)$，显然过不了。</p>
+<p>我们考虑维护$a_i$的前缀和数组$sum_i$，那么方程就可以改写为：<br>$$<br>\operatorname{f}(i,j)&#x3D;\max{\operatorname{f}(i,k)+\operatorname{f}(k+1,j)+sum_j-sum_{i-1}|i\leq k&lt;j}<br>$$<br>时间复杂度为$O(n^3)$，可以过。</p>
+<p>但是我们又会发现一个问题，我们以上讨论的都是处理链上的问题，而题目是在环上的，那我们还需要破环成链。</p>
+<p>如果我们暴力把环拆开，枚举链的起点，则时间复杂度退化到$O(n^4)$，前功尽弃。</p>
+<p>但是如果我们把原来的环以第1堆石子为起点破成链，再将原数据复制一份接在这条链的后面，这样我们就可以把问题转化为求$\max{\operatorname{f}(i,i+n-1)|1\le i\le n}$，时间复杂度仍为$O(n^3)$，完美解决问题。</p>
+<p class="note note-info">建议大家在枚举的时候选择枚举区间起点i和区间长度len再利用j=i+len-1算出j，这样可以降低一点时间复杂度。</p>
 
+<p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> n, sum[<span class="hljs-number">201</span>], f[<span class="hljs-number">201</span>][<span class="hljs-number">201</span>], dp[<span class="hljs-number">201</span>][<span class="hljs-number">201</span>], maxn, minn = <span class="hljs-number">0x3f3f3f3f</span>;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> <span class="hljs-type">const</span> *argv[])</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>    &#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;sum[i]);<br>        sum[n + i] = sum[i];    <span class="hljs-comment">//破环成链</span><br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">2</span> * n; i++)<br>        sum[i] += sum[i - <span class="hljs-number">1</span>];   <span class="hljs-comment">//预处理前缀和</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> len = <span class="hljs-number">1</span>; len &lt;= n; len++)<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i + len &lt;= <span class="hljs-number">2</span> * n; i++)<br>        &#123;<br>            <span class="hljs-type">int</span> j = i + len;<br>            dp[i][j] = <span class="hljs-number">0x3f3f3f3f</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k = i; k &lt; j; k++)<br>                f[i][j] = <span class="hljs-built_in">max</span>(f[i][j], f[i][k] + f[k + <span class="hljs-number">1</span>][j] + sum[j]<br>                - sum[i - <span class="hljs-number">1</span>]), dp[i][j] = <span class="hljs-built_in">min</span>(dp[i][j], dp[i][k]<br>                + dp[k + <span class="hljs-number">1</span>][j] + sum[j] - sum[i - <span class="hljs-number">1</span>]);<br>        &#125;<span class="hljs-comment">//状态转移</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>    &#123;<br>        maxn = <span class="hljs-built_in">max</span>(maxn, f[i][i + n - <span class="hljs-number">1</span>]);<br>        minn = <span class="hljs-built_in">min</span>(minn, dp[i][i + n - <span class="hljs-number">1</span>]);<br>    &#125;<span class="hljs-comment">//求答案</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n%d&quot;</span>, minn, maxn);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -327,13 +328,6 @@
             <div>
               <div class="post-metas my-3">
   
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%9B%BE%E8%AE%BA%E7%AC%94%E8%AE%B0/" class="print-no-link">#图论笔记</a>
-      
-    </div>
   
 </div>
 
@@ -343,8 +337,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>图论基础</div>
-      <div>http://example.com/2024/07/30/图论基础/</div>
+      <div>区间DP</div>
+      <div>http://example.com/2024/07/30/区间DP/</div>
     </div>
     <div class="license-meta">
       
@@ -388,18 +382,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/30/%E8%83%8C%E5%8C%85DP/" title="背包DP">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">背包DP</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/07/23/%E9%80%92%E6%8E%A8/" title="递推">
-                        <span class="hidden-mobile">递推</span>
+                      <a href="/2024/07/30/%E8%83%8C%E5%8C%85DP/" title="背包DP">
+                        <span class="hidden-mobile">背包DP</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
