@@ -8,14 +8,12 @@
     <link href="/2024/08/06/%E5%93%88%E5%B8%8C%E8%A1%A8/"/>
     <url>/2024/08/06/%E5%93%88%E5%B8%8C%E8%A1%A8/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p>哈希（hash）有明散列，所以哈希表（hash表）又名散列表。hash表是以键值对存储的数据结构。哈希表与数组的区别就在于哈希表的关键字可以是任何数据类型。</p><h1 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h1><p>在STL中，C++已经准备好了一个用红黑树维护的关联式容器，称为map。</p><p>map的操作如下：</p><table><thead><tr><th align="center">操作</th><th align="center">功能</th></tr></thead><tbody><tr><td align="center"><code>map&lt;data1,data2&gt; hash</code></td><td align="center">定义一个关键字的类型为data1，值的类型为data2的hash表hash</td></tr><tr><td align="center"><code>hash[key]=value</code>或<code>hash.insert(make_pair(key,value))</code></td><td align="center">在s中插入一个关键字为x，值为y的键值对</td></tr><tr><td align="center"><code>hash.erase(key)</code></td><td align="center">删除关键字为key的所有元素</td></tr><tr><td align="center"><code>hash.erase(it)</code></td><td align="center">删除迭代器为it的元素</td></tr><tr><td align="center"><code>hash.erase(first,last)</code></td><td align="center">删除迭代器在[first,last)范围内的所有元素</td></tr><tr><td align="center"><code>hash.clear()</code></td><td align="center">清空hash表</td></tr><tr><td align="center"><code>hash.count(key)</code></td><td align="center">返回键为key的键值对的数量，若无则返回-1</td></tr><tr><td align="center"><code>hash.begin()</code>或<code>hash.cbegin()</code></td><td align="center">指向hash首元素的迭代器</td></tr><tr><td align="center"><code>hash.end()</code>或<code>hash.end()</code></td><td align="center">指向hash尾端占位符的迭代器，没有元素</td></tr><tr><td align="center"><code>hash.rbegin()</code>或<code>hash.crbegin()</code></td><td align="center"></td></tr><tr><td align="center"><code>hash.rend()</code>或<code>hash.crend()</code></td><td align="center"></td></tr></tbody></table>]]></content>
     
     
     <categories>
       
       <category>数据结构笔记</category>
-      
-      <category>字符串笔记</category>
       
     </categories>
     
@@ -25,6 +23,8 @@
       <tag>哈希</tag>
       
       <tag>字符串</tag>
+      
+      <tag>字符串哈希</tag>
       
     </tags>
     

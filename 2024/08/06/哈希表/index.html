@@ -16,16 +16,19 @@
   <meta name="author" content="zhrleo">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="哈希（hash）有明散列，所以哈希表（hash表）又名散列表。hash表是以键值对存储的数据结构。哈希表与数组的区别就在于哈希表的关键字可以是任何数据类型。 STL在STL中，C++已经准备好了一个用红黑树维护的关联式容器，称为map。 map的操作如下：    操作 功能    map&lt;data1,data2&gt; hash 定义一个关键字的类型为data1，值的类型为data2的has">
+<meta property="og:type" content="article">
 <meta property="og:title" content="哈希表">
 <meta property="og:url" content="http://example.com/2024/08/06/%E5%93%88%E5%B8%8C%E8%A1%A8/index.html">
 <meta property="og:site_name" content="zhrleo&#39;s blog">
+<meta property="og:description" content="哈希（hash）有明散列，所以哈希表（hash表）又名散列表。hash表是以键值对存储的数据结构。哈希表与数组的区别就在于哈希表的关键字可以是任何数据类型。 STL在STL中，C++已经准备好了一个用红黑树维护的关联式容器，称为map。 map的操作如下：    操作 功能    map&lt;data1,data2&gt; hash 定义一个关键字的类型为data1，值的类型为data2的has">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-08-06T06:14:02.000Z">
-<meta property="article:modified_time" content="2024-08-06T06:26:10.763Z">
+<meta property="article:modified_time" content="2024-08-06T07:11:42.795Z">
 <meta property="article:author" content="zhrleo">
 <meta property="article:tag" content="哈希">
 <meta property="article:tag" content="字符串">
+<meta property="article:tag" content="字符串哈希">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -238,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          263 字
         
       </span>
     
@@ -249,7 +252,7 @@
         
         
         
-          1 分钟
+          3 分钟
         
       </span>
     
@@ -299,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-08-06T14:26:10+08:00
+                    本文最后更新于 2024-08-06T15:11:42+08:00
                   
                   
 
@@ -309,7 +312,62 @@
             
               <div class="markdown-body">
                 
-                
+                <p>哈希（hash）有明散列，所以哈希表（hash表）又名散列表。hash表是以键值对存储的数据结构。哈希表与数组的区别就在于哈希表的关键字可以是任何数据类型。</p>
+<h1 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h1><p>在STL中，C++已经准备好了一个用红黑树维护的关联式容器，称为map。</p>
+<p>map的操作如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>map&lt;data1,data2&gt; hash</code></td>
+<td align="center">定义一个关键字的类型为data1，值的类型为data2的hash表hash</td>
+</tr>
+<tr>
+<td align="center"><code>hash[key]=value</code>或<code>hash.insert(make_pair(key,value))</code></td>
+<td align="center">在s中插入一个关键字为x，值为y的键值对</td>
+</tr>
+<tr>
+<td align="center"><code>hash.erase(key)</code></td>
+<td align="center">删除关键字为key的所有元素</td>
+</tr>
+<tr>
+<td align="center"><code>hash.erase(it)</code></td>
+<td align="center">删除迭代器为it的元素</td>
+</tr>
+<tr>
+<td align="center"><code>hash.erase(first,last)</code></td>
+<td align="center">删除迭代器在[first,last)范围内的所有元素</td>
+</tr>
+<tr>
+<td align="center"><code>hash.clear()</code></td>
+<td align="center">清空hash表</td>
+</tr>
+<tr>
+<td align="center"><code>hash.count(key)</code></td>
+<td align="center">返回键为key的键值对的数量，若无则返回-1</td>
+</tr>
+<tr>
+<td align="center"><code>hash.begin()</code>或<code>hash.cbegin()</code></td>
+<td align="center">指向hash首元素的迭代器</td>
+</tr>
+<tr>
+<td align="center"><code>hash.end()</code>或<code>hash.end()</code></td>
+<td align="center">指向hash尾端占位符的迭代器，没有元素</td>
+</tr>
+<tr>
+<td align="center"><code>hash.rbegin()</code>或<code>hash.crbegin()</code></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>hash.rend()</code>或<code>hash.crend()</code></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+
                 
               </div>
             
@@ -330,13 +388,6 @@
   <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/" class="category-chain-item">数据结构笔记</a>
   
   
-    <span>></span>
-    
-  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AC%94%E8%AE%B0/" class="category-chain-item">字符串笔记</a>
-  
-  
-
-  
 
       </span>
     
@@ -352,6 +403,8 @@
         <a href="/tags/%E5%93%88%E5%B8%8C/" class="print-no-link">#哈希</a>
       
         <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="print-no-link">#字符串</a>
+      
+        <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C/" class="print-no-link">#字符串哈希</a>
       
     </div>
   
