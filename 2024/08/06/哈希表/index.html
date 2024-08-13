@@ -16,15 +16,15 @@
   <meta name="author" content="zhrleo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="哈希（hash）有明散列，所以哈希表（hash表）又名散列表。hash表是以键值对存储的数据结构。哈希表与数组的区别就在于哈希表的关键字可以是任何数据类型。 STL在STL中，C++已经准备好了一个用红黑树维护的关联式容器，称为map。 map的操作如下：    操作 功能    map&lt;data1,data2&gt; hash 定义一个关键字的类型为data1，值的类型为data2的has">
+    <meta name="description" content="哈希（hash）有明散列，所以哈希表（hash表）又名散列表。hash表是以键值对存储的数据结构。哈希表与数组的区别就在于哈希表的关键字可以是任何数据类型。 STL在STL中，C++已经准备好了一个用红黑树维护的关联式容器，称为map。 操作   操作 功能    map&lt;data1,data2&gt; hash 定义一个关键字的类型为data1，值的类型为data2的hash表hash">
 <meta property="og:type" content="article">
 <meta property="og:title" content="哈希表">
 <meta property="og:url" content="http://example.com/2024/08/06/%E5%93%88%E5%B8%8C%E8%A1%A8/index.html">
 <meta property="og:site_name" content="zhrleo&#39;s blog">
-<meta property="og:description" content="哈希（hash）有明散列，所以哈希表（hash表）又名散列表。hash表是以键值对存储的数据结构。哈希表与数组的区别就在于哈希表的关键字可以是任何数据类型。 STL在STL中，C++已经准备好了一个用红黑树维护的关联式容器，称为map。 map的操作如下：    操作 功能    map&lt;data1,data2&gt; hash 定义一个关键字的类型为data1，值的类型为data2的has">
+<meta property="og:description" content="哈希（hash）有明散列，所以哈希表（hash表）又名散列表。hash表是以键值对存储的数据结构。哈希表与数组的区别就在于哈希表的关键字可以是任何数据类型。 STL在STL中，C++已经准备好了一个用红黑树维护的关联式容器，称为map。 操作   操作 功能    map&lt;data1,data2&gt; hash 定义一个关键字的类型为data1，值的类型为data2的hash表hash">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-08-06T06:14:02.000Z">
-<meta property="article:modified_time" content="2024-08-06T07:11:42.795Z">
+<meta property="article:modified_time" content="2024-08-13T06:52:33.563Z">
 <meta property="article:author" content="zhrleo">
 <meta property="article:tag" content="哈希">
 <meta property="article:tag" content="字符串">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          263 字
+          1.6k 字
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          3 分钟
+          14 分钟
         
       </span>
     
@@ -302,7 +302,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-08-06T15:11:42+08:00
+                    本文最后更新于 2024-08-13T14:52:33+08:00
                   
                   
 
@@ -314,8 +314,7 @@
                 
                 <p>哈希（hash）有明散列，所以哈希表（hash表）又名散列表。hash表是以键值对存储的数据结构。哈希表与数组的区别就在于哈希表的关键字可以是任何数据类型。</p>
 <h1 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h1><p>在STL中，C++已经准备好了一个用红黑树维护的关联式容器，称为map。</p>
-<p>map的操作如下：</p>
-<table>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><table>
 <thead>
 <tr>
 <th align="center">操作</th>
@@ -360,14 +359,93 @@
 </tr>
 <tr>
 <td align="center"><code>hash.rbegin()</code>或<code>hash.crbegin()</code></td>
-<td align="center"></td>
+<td align="center">指向hash末元素的迭代器</td>
 </tr>
 <tr>
 <td align="center"><code>hash.rend()</code>或<code>hash.crend()</code></td>
-<td align="center"></td>
+<td align="center">hash首元素的前一个，没有元素</td>
+</tr>
+<tr>
+<td align="center"><code>hash.find(key)</code></td>
+<td align="center">返回关键字为key的元素的迭代器，若无则返回<code>hash.end()</code></td>
+</tr>
+<tr>
+<td align="center"><code>hash.lower_bound(key)</code></td>
+<td align="center">返回首个关键字不小于key的元素的迭代器，若无则返回<code>hash.end()</code></td>
+</tr>
+<tr>
+<td align="center"><code>hash.upper_bound(key)</code></td>
+<td align="center">返回首个关键字大于key的元素的迭代器，若无则返回<code>hash.end()</code></td>
+</tr>
+<tr>
+<td align="center"><code>hash.size()</code></td>
+<td align="center">hash的元素个数</td>
+</tr>
+<tr>
+<td align="center"><code>map&lt;data1,data2&gt;::iterator it</code></td>
+<td align="center">定义一个关键字的类型为data1，值的类型为data2的hash表的迭代器it</td>
 </tr>
 </tbody></table>
-
+<h2 id="遍历方式"><a href="#遍历方式" class="headerlink" title="遍历方式"></a>遍历方式</h2><p>方法一：用迭代器遍历</p>
+<p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp">map&lt;data1, data2&gt; hash;<br>map&lt;data1, data2&gt;::iterator it;<br><span class="hljs-keyword">for</span> (i = hash.<span class="hljs-built_in">begin</span>(); i &lt; hash.<span class="hljs-built_in">end</span>(); i++)<br>    ;<br></code></pre></td></tr></table></figure>
+<p>方法一：使用范围for循环</p>
+<p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">map&lt;data1, data2&gt; hash;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> x : hash)<br>     ;<br></code></pre></td></tr></table></figure>
+<h1 id="手写哈希"><a href="#手写哈希" class="headerlink" title="手写哈希"></a>手写哈希</h1><p>我们为了使键值对对应到内存中，我们就需要利用键为键值对计算索引，这个计算方法就称之为哈希（hash）函数或散列函数。</p>
+<p>当然在实际操作中，往往会出现两个键不同而索引相同的情况，这种情况被称之为哈希（hash）冲突。</p>
+<h2 id="hash函数的构造方法"><a href="#hash函数的构造方法" class="headerlink" title="hash函数的构造方法"></a>hash函数的构造方法</h2><h3 id="方法一：直接以键为地址"><a href="#方法一：直接以键为地址" class="headerlink" title="方法一：直接以键为地址"></a>方法一：直接以键为地址</h3><p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> key, <span class="hljs-type">int</span> val)</span></span><br><span class="hljs-function"></span>&#123;<br>    hash[key] = val;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="方法二：将键经过线性运算后作为地址"><a href="#方法二：将键经过线性运算后作为地址" class="headerlink" title="方法二：将键经过线性运算后作为地址"></a>方法二：将键经过线性运算后作为地址</h3><p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> a, b;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> key, <span class="hljs-type">int</span> val)</span></span><br><span class="hljs-function"></span>&#123;<br>    hash[a * key + b] = val;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="方法三：离散化"><a href="#方法三：离散化" class="headerlink" title="方法三：离散化"></a>方法三：离散化</h3><p>以每个键键值对的值的排名作为新的值，可见离散化本质上与方法一相同，只处理了值过大或不符合计算需求的问题。</p>
+<p>在不关注输入顺序时，我们可以创建原数组的副本，排序去重再将排名存回原数组。</p>
+<p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> n, a[<span class="hljs-number">10000005</span>], tmp[<span class="hljs-number">10000005</span>];<br><span class="hljs-built_in">memccpy</span>(tmp, a, <span class="hljs-built_in">sizeof</span>(tmp));<br><span class="hljs-built_in">sort</span>(tmp + <span class="hljs-number">1</span>, tmp + n + <span class="hljs-number">1</span>);<br><span class="hljs-type">int</span> m = <span class="hljs-built_in">unique</span>(tmp + <span class="hljs-number">1</span>, tmp + n + <span class="hljs-number">1</span>) - (tmp + <span class="hljs-number">1</span>);<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>    a[i] = <span class="hljs-built_in">lower_bound</span>(tmp + <span class="hljs-number">1</span>, tmp + m + <span class="hljs-number">1</span>, a[i]) - tmp;<br></code></pre></td></tr></table></figure>
+<p>在关注输入顺序时，我们可以创建原数组的副本同时记录每个元素的位置，排序后再将位置存回原数组。</p>
+<p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">data</span><br>&#123;<br>    <span class="hljs-type">int</span> id, val;<br>&#125; tmp[<span class="hljs-number">10000005</span>];<br><span class="hljs-type">int</span> n, a[<span class="hljs-number">10000005</span>];<br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(data x, data y)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> (x.val &lt; y.val) || (x.val == y.val &amp;&amp; x.id &lt; y.id);<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> <span class="hljs-type">const</span> *argv[])</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>        tmp[i].id = i, tmp[i].val = a[i];<br>    <span class="hljs-built_in">sort</span>(tmp + <span class="hljs-number">1</span>, tmp + n + <span class="hljs-number">1</span>, cmp);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>        a[tmp[i].id] = i;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="方法四：数字分析法"><a href="#方法四：数字分析法" class="headerlink" title="方法四：数字分析法"></a>方法四：数字分析法</h3><p>取键的中间几位作为地址。</p>
+<p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> x, y;<br><span class="hljs-type">int</span> ten1, ten2;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> key, <span class="hljs-type">int</span> val)</span></span><br><span class="hljs-function"></span>&#123;<br>    hash[key % ten2 / ten1] = val;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> <span class="hljs-type">const</span> *argv[])</span></span><br><span class="hljs-function"></span>&#123;<br>    ten1 = <span class="hljs-built_in">pow</span>(<span class="hljs-number">10</span>, x), ten2 = <span class="hljs-built_in">pow</span>(<span class="hljs-number">10</span>, y + <span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="方法五：平方取中法"><a href="#方法五：平方取中法" class="headerlink" title="方法五：平方取中法"></a>方法五：平方取中法</h3><p>先将键平方再使用方法四。</p>
+<p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> x, y;<br><span class="hljs-type">int</span> ten1, ten2;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> key, <span class="hljs-type">int</span> val)</span></span><br><span class="hljs-function"></span>&#123;<br>    hash[key * key % ten2 / ten1] = val;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> <span class="hljs-type">const</span> *argv[])</span></span><br><span class="hljs-function"></span>&#123;<br>    ten1 = <span class="hljs-built_in">pow</span>(<span class="hljs-number">10</span>, x), ten2 = <span class="hljs-built_in">pow</span>(<span class="hljs-number">10</span>, y + <span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="方法六：取模法"><a href="#方法六：取模法" class="headerlink" title="方法六：取模法"></a>方法六：取模法</h3><p>将键对于同一模数取模作为地址。</p>
+<p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> x, y;<br><span class="hljs-type">int</span> ten1, ten2;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> key, <span class="hljs-type">int</span> val)</span></span><br><span class="hljs-function"></span>&#123;<br>    hash[key * key % ten2 / ten1] = val;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> <span class="hljs-type">const</span> *argv[])</span></span><br><span class="hljs-function"></span>&#123;<br>    ten1 = <span class="hljs-built_in">pow</span>(<span class="hljs-number">10</span>, x), ten2 = <span class="hljs-built_in">pow</span>(<span class="hljs-number">10</span>, y + <span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="方法七：字符串哈希"><a href="#方法七：字符串哈希" class="headerlink" title="方法七：字符串哈希"></a>方法七：字符串哈希</h3><p>适用于所有以数组为键的键值对。</p>
+<p>将键中的每一个元素作为一位转化成b进制数再使用方法六，要注意的是要满足(b,p)&#x3D;1（p为模数）。</p>
+<p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> mod;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> key, <span class="hljs-type">int</span> val)</span></span><br><span class="hljs-function"></span>&#123;<br>    hash[key % mod] = val;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="方法八：折叠法"><a href="#方法八：折叠法" class="headerlink" title="方法八：折叠法"></a>方法八：折叠法</h3><p>以定长的位数对键进行拆分并相加作为地址，例如123456789以4为定长折叠后变为1+2345+6789&#x3D;9135.</p>
+<p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> len;<br><span class="hljs-type">int</span> ten;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> k, <span class="hljs-type">int</span> val)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> key = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (k)<br>        key += k % ten, k /= ten;<br>    hash[k] = val;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> <span class="hljs-type">const</span> *argv[])</span></span><br><span class="hljs-function"></span>&#123;<br>    ten = <span class="hljs-built_in">pow</span>(<span class="hljs-number">10</span>, len + <span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="方法九：随机法"><a href="#方法九：随机法" class="headerlink" title="方法九：随机法"></a>方法九：随机法</h3><p>以随机数作为地址，或者以随机数作为值。</p>
+<p>参考代码1：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">srand</span>(<span class="hljs-built_in">time</span>(<span class="hljs-number">0</span>));<br>    hash[<span class="hljs-built_in">rand</span>()] = val;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>参考代码2：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> key)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">srand</span>(<span class="hljs-built_in">time</span>(<span class="hljs-number">0</span>));<br>    hash[key] = <span class="hljs-built_in">rand</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="处理hash冲突的方法"><a href="#处理hash冲突的方法" class="headerlink" title="处理hash冲突的方法"></a>处理hash冲突的方法</h2><h3 id="方法一：开放地址法"><a href="#方法一：开放地址法" class="headerlink" title="方法一：开放地址法"></a>方法一：开放地址法</h3><p>再开放一个地址给冲突的元素，其中有线性探测，二次探测，随机探测三种方法。</p>
+<p>线性探测就是寻找冲突元素下一个地址存储。</p>
+<p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> key, <span class="hljs-type">int</span> val)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">/*此处代指hash函数*/</span><br>    <span class="hljs-keyword">while</span> (hash[key])<br>        key++;<br>    hash[key] = val;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>二次探测就是在线性探测的基础上加一个寻找上一个地址的操作。</p>
+<p>线性探测就是寻找冲突元素下一个地址存储。</p>
+<p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> MAXN;<br><span class="hljs-type">int</span> hash[MAXN];<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> key, <span class="hljs-type">int</span> val)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">/*此处代指hash函数*/</span><br>    <span class="hljs-keyword">while</span> (hash[key])<br>        key++;<br>    <span class="hljs-keyword">if</span> (key &lt; MAXN)<br>    &#123;<br>        hash[key] = val;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">while</span> (hash[--key])<br>        ;<br>    hash[key] = val;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>随机探测就是随机寻找一个空地址存储。</p>
+<p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> MAXN;<br><span class="hljs-type">int</span> hash[MAXN];<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> key, <span class="hljs-type">int</span> val)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">/*此处代指hash函数*/</span><br>    <span class="hljs-keyword">if</span> (hash[key] == <span class="hljs-number">0</span>)<br>    &#123;<br>        hash[key] = val;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-built_in">srand</span>(<span class="hljs-built_in">time</span>(<span class="hljs-number">0</span>));<br>    key = <span class="hljs-built_in">rand</span>() % MAXN;<br>    <span class="hljs-keyword">while</span> (hash[key])<br>        key = <span class="hljs-built_in">rand</span>() % MAXN;<br>    hash[key] = val;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="方法二：再哈希法"><a href="#方法二：再哈希法" class="headerlink" title="方法二：再哈希法"></a>方法二：再哈希法</h3><p>遇到冲突换一个hash函数计算地址。</p>
+<p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">h1</span><span class="hljs-params">(<span class="hljs-type">int</span> key)</span></span>;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">h2</span><span class="hljs-params">(<span class="hljs-type">int</span> key)</span></span>; <span class="hljs-comment">// 两个计算地址的哈希函数</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> key, <span class="hljs-type">int</span> val)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> k = <span class="hljs-built_in">h1</span>(key);<br>    <span class="hljs-keyword">if</span> (hash[k])<br>        k = <span class="hljs-built_in">h2</span>(key);<br>    hash[k] = val;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="方法三：邻接表法"><a href="#方法三：邻接表法" class="headerlink" title="方法三：邻接表法"></a>方法三：邻接表法</h3><p>将每一个键对应一个链表，再将键相同的元素存储到链表里。</p>
+<p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp">vector&lt;data&gt; hash[<span class="hljs-number">10000005</span>];<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> key, data val)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">/*此处代指hash函数*/</span><br>    hash[key].<span class="hljs-built_in">push_back</span>(val);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="方法四：公共区域法"><a href="#方法四：公共区域法" class="headerlink" title="方法四：公共区域法"></a>方法四：公共区域法</h3><p>建立一个公共区域专门存储冲突元素。</p>
+<p>参考代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> mod;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-type">int</span> key, data val)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">/*此处代指hash函数*/</span><br>    <span class="hljs-keyword">if</span> (hash[key])<br>        hash[key + mod] = val;<br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
