@@ -16,25 +16,25 @@
   <meta name="author" content="zhrleo">
   <meta name="keywords" content="">
   
-    <meta name="description" content="区间DP指的是设计的状态一般与区间端点有关，并且在状态转移时出现区间合并的问题。本博客将通过例题来讲解区间DP。 题解设$\operatorname{f}(i,j)$表示将区间[i,j]之间的石子堆合并到一起的最大得分。 那么显然可以得到状态转移方程：$$\operatorname{f}(i,j)&#x3D;\max{\operatorname{f}(i,k)+\operatorname{f}(k">
+    <meta name="description" content="RMQ问题就是维护区间最值的问题，同时只要满足结合律的运算都可以使用解决RMQ的算法解决。 本篇博客以例题来讲解倍增算法。 题解解题思路这道题如果暴力求解的话，时间复杂度为O(nm)，绝对过不了，所以我们需要优化。 注意到我们暴力算法的缺陷有两个：  查询O(n)，是超时的直接原因； 重复贡献，即询问时的区间有公共部分。  根据缺陷2，我们可以清楚的认识到我们需要预处理，但如果是普通的预处理时间复">
 <meta property="og:type" content="article">
-<meta property="og:title" content="区间DP">
-<meta property="og:url" content="http://example.com/2024/07/30/%E5%8C%BA%E9%97%B4DP/index.html">
+<meta property="og:title" content="倍增">
+<meta property="og:url" content="http://example.com/2024/08/15/%E5%80%8D%E5%A2%9E/index.html">
 <meta property="og:site_name" content="zhrleo&#39;s blog">
-<meta property="og:description" content="区间DP指的是设计的状态一般与区间端点有关，并且在状态转移时出现区间合并的问题。本博客将通过例题来讲解区间DP。 题解设$\operatorname{f}(i,j)$表示将区间[i,j]之间的石子堆合并到一起的最大得分。 那么显然可以得到状态转移方程：$$\operatorname{f}(i,j)&#x3D;\max{\operatorname{f}(i,k)+\operatorname{f}(k">
+<meta property="og:description" content="RMQ问题就是维护区间最值的问题，同时只要满足结合律的运算都可以使用解决RMQ的算法解决。 本篇博客以例题来讲解倍增算法。 题解解题思路这道题如果暴力求解的话，时间复杂度为O(nm)，绝对过不了，所以我们需要优化。 注意到我们暴力算法的缺陷有两个：  查询O(n)，是超时的直接原因； 重复贡献，即询问时的区间有公共部分。  根据缺陷2，我们可以清楚的认识到我们需要预处理，但如果是普通的预处理时间复">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-07-30T07:38:23.000Z">
-<meta property="article:modified_time" content="2024-08-15T06:22:40.968Z">
+<meta property="article:published_time" content="2024-08-15T05:03:36.000Z">
+<meta property="article:modified_time" content="2024-08-15T06:23:16.007Z">
 <meta property="article:author" content="zhrleo">
-<meta property="article:tag" content="区间DP">
-<meta property="article:tag" content="DP">
+<meta property="article:tag" content="倍增">
+<meta property="article:tag" content="RMQ">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>区间DP - zhrleo&#39;s blog</title>
+  <title>倍增 - zhrleo&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -212,7 +212,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="区间DP"></span>
+            <span id="subtitle" data-typed-text="倍增"></span>
           
         </div>
 
@@ -228,8 +228,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-30 15:38" pubdate>
-          2024年7月30日 下午
+        <time datetime="2024-08-15 13:03" pubdate>
+          2024年8月15日 下午
         </time>
       </span>
     
@@ -240,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          605 字
+          572 字
         
       </span>
     
@@ -251,7 +251,7 @@
         
         
         
-          6 分钟
+          5 分钟
         
       </span>
     
@@ -296,12 +296,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">区间DP</h1>
+            <h1 id="seo-header">倍增</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-08-15T14:22:40+08:00
+                    本文最后更新于 2024-08-15T14:23:16+08:00
                   
                   
 
@@ -311,18 +311,21 @@
             
               <div class="markdown-body">
                 
-                <p>区间DP指的是设计的状态一般与区间端点有关，并且在状态转移时出现区间合并的问题。本博客将通过<a class="btn" target="_blank" rel="noopener" href="https://loj.ac/problem/10147" title="10147. 「一本通 5.1 例 1」石子合并">例题</a>来讲解区间DP。</p>
-<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>设$\operatorname{f}(i,j)$表示将区间[i,j]之间的石子堆合并到一起的最大得分。</p>
-<p>那么显然可以得到状态转移方程：<br>$$<br>\operatorname{f}(i,j)&#x3D;\max{\operatorname{f}(i,k)+\operatorname{f}(k+1,j)+\sum_{t&#x3D;i}^ja_t|i\leq k&lt;j}<br>$$<br>其中$a_i$是第i堆石子的数量</p>
-<p>当然，这个方程的时间复杂度为$O(n^4)$，显然过不了。</p>
-<p>我们考虑维护$a_i$的前缀和数组$sum_i$，那么方程就可以改写为：<br>$$<br>\operatorname{f}(i,j)&#x3D;\max{\operatorname{f}(i,k)+\operatorname{f}(k+1,j)+sum_j-sum_{i-1}|i\leq k&lt;j}<br>$$<br>时间复杂度为$O(n^3)$，可以过。</p>
-<p>但是我们又会发现一个问题，我们以上讨论的都是处理链上的问题，而题目是在环上的，那我们还需要破环成链。</p>
-<p>如果我们暴力把环拆开，枚举链的起点，则时间复杂度退化到$O(n^4)$，前功尽弃。</p>
-<p>但是如果我们把原来的环以第1堆石子为起点破成链，再将原数据复制一份接在这条链的后面，这样我们就可以把问题转化为求$\max{\operatorname{f}(i,i+n-1)|1\le i\le n}$，时间复杂度仍为$O(n^3)$，完美解决问题。</p>
-<p class="note note-info">建议大家在枚举的时候选择枚举区间起点i和区间长度len再利用j=i+len-1算出j，这样可以降低一点时间复杂度。</p>
+                <p>RMQ问题就是维护区间最值的问题，同时只要满足结合律的运算都可以使用解决RMQ的算法解决。</p>
+<p>本篇博客以<a class=btn target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3865" title="P3865 【模板】ST 表 && RMQ 问题">例题</a>来讲解倍增算法。</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>这道题如果暴力求解的话，时间复杂度为O(nm)，绝对过不了，所以我们需要优化。</p>
+<p>注意到我们暴力算法的缺陷有两个：</p>
+<ol>
+<li>查询O(n)，是超时的直接原因；</li>
+<li>重复贡献，即询问时的区间有公共部分。</li>
+</ol>
+<p>根据缺陷2，我们可以清楚的认识到我们需要预处理，但如果是普通的预处理时间复杂度为$O(n^2)$，也过不了，所以我们需要倍增维护ST表。</p>
+<p>我们现在的关键问题在于，每一次预处理的区间长度都是相邻正整数导致超时，那我们不妨把预处理的时间缩短到$O(n\log_2n)$，即可完美解决。</p>
+<p>设$st_{i,j}$表示从i元素开始区间长为$2^j$的区间的最大值，那么$st_{i,j}$维护的就是区间$[i,i+2^j-1]$，特别地，有$st_{i,0}&#x3D;a_i(1\le i\le n)$。</p>
+<p>由于$[i,i+2^j-1]&#x3D;[i,i+2^{j-1}-1]\cup[i+2^{j-1},i+2^j-1]$，我们便可以得出<br>$$<br>st_{i,j}&#x3D;\max{st_{i,j-1},st_{i+2^j,j-1}|1\le i\le n,1\le 2^j\le n-i+1}<br>$$<br>此时当查询到[l,r]时，最大值就是$\max(st_{l,\log_2r-l+1},st_{r-\log_2r-l+1,r})$。</p>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> n, m, f[<span class="hljs-number">100001</span>][<span class="hljs-number">18</span>], logn[<span class="hljs-number">100001</span>];<br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-type">int</span> <span class="hljs-title">read</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> x = <span class="hljs-number">0</span>, f = <span class="hljs-number">1</span>;<br>    <span class="hljs-type">char</span> ch = <span class="hljs-built_in">getchar</span>();<br>    <span class="hljs-keyword">while</span> (ch &lt; <span class="hljs-string">&#x27;0&#x27;</span> || ch &gt; <span class="hljs-string">&#x27;9&#x27;</span>)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (ch == <span class="hljs-string">&#x27;-&#x27;</span>)<br>            f = <span class="hljs-number">-1</span>;<br>        ch = <span class="hljs-built_in">getchar</span>();<br>    &#125;<br>    <span class="hljs-keyword">while</span> (ch &gt;= <span class="hljs-string">&#x27;0&#x27;</span> &amp;&amp; ch &lt;= <span class="hljs-string">&#x27;9&#x27;</span>)<br>    &#123;<br>        x = x * <span class="hljs-number">10</span> + ch - <span class="hljs-number">48</span>;<br>        ch = <span class="hljs-built_in">getchar</span>();<br>    &#125;<br>    <span class="hljs-keyword">return</span> x * f;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> <span class="hljs-type">const</span> *argv[])</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; i &lt; <span class="hljs-number">100001</span>; i++)<br>        logn[i] = logn[i / <span class="hljs-number">2</span>] + <span class="hljs-number">1</span>;<br>    n = <span class="hljs-built_in">read</span>(), m = <span class="hljs-built_in">read</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>        f[i][<span class="hljs-number">0</span>] = <span class="hljs-built_in">read</span>();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt; <span class="hljs-number">18</span>; j++)<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i + (<span class="hljs-number">1</span> &lt;&lt; j - <span class="hljs-number">1</span>) - <span class="hljs-number">1</span> &lt;= n; i++)<br>            f[i][j] = <span class="hljs-built_in">max</span>(f[i][j - <span class="hljs-number">1</span>], f[i + (<span class="hljs-number">1</span> &lt;&lt; j - <span class="hljs-number">1</span>)][j - <span class="hljs-number">1</span>]);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++)<br>    &#123;<br>        <span class="hljs-type">int</span> l = <span class="hljs-built_in">read</span>(), r = <span class="hljs-built_in">read</span>();<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, <span class="hljs-built_in">max</span>(f[l][logn[r - l + <span class="hljs-number">1</span>]], f[r - (<span class="hljs-number">1</span> &lt;&lt; logn[r - l + <span class="hljs-number">1</span>]) + <span class="hljs-number">1</span>][logn[r - l + <span class="hljs-number">1</span>]]));<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>倍增求LCA</p>
 
-<p>参考代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-type">int</span> n, sum[<span class="hljs-number">201</span>], f[<span class="hljs-number">201</span>][<span class="hljs-number">201</span>], dp[<span class="hljs-number">201</span>][<span class="hljs-number">201</span>], maxn, minn = <span class="hljs-number">0x3f3f3f3f</span>;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> <span class="hljs-type">const</span> *argv[])</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>    &#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;sum[i]);<br>        sum[n + i] = sum[i];    <span class="hljs-comment">//破环成链</span><br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">2</span> * n; i++)<br>        sum[i] += sum[i - <span class="hljs-number">1</span>];   <span class="hljs-comment">//预处理前缀和</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> len = <span class="hljs-number">1</span>; len &lt;= n; len++)<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i + len &lt;= <span class="hljs-number">2</span> * n; i++)<br>        &#123;<br>            <span class="hljs-type">int</span> j = i + len;<br>            dp[i][j] = <span class="hljs-number">0x3f3f3f3f</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k = i; k &lt; j; k++)<br>                f[i][j] = <span class="hljs-built_in">max</span>(f[i][j], f[i][k] + f[k + <span class="hljs-number">1</span>][j] + sum[j]<br>                - sum[i - <span class="hljs-number">1</span>]), dp[i][j] = <span class="hljs-built_in">min</span>(dp[i][j], dp[i][k]<br>                + dp[k + <span class="hljs-number">1</span>][j] + sum[j] - sum[i - <span class="hljs-number">1</span>]);<br>        &#125;<span class="hljs-comment">//状态转移</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>    &#123;<br>        maxn = <span class="hljs-built_in">max</span>(maxn, f[i][i + n - <span class="hljs-number">1</span>]);<br>        minn = <span class="hljs-built_in">min</span>(minn, dp[i][i + n - <span class="hljs-number">1</span>]);<br>    &#125;<span class="hljs-comment">//求答案</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n%d&quot;</span>, minn, maxn);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -340,7 +343,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" class="category-chain-item">算法笔记</a>
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/" class="category-chain-item">数据结构笔记</a>
   
   
 
@@ -355,9 +358,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8C%BA%E9%97%B4DP/" class="print-no-link">#区间DP</a>
+        <a href="/tags/%E5%80%8D%E5%A2%9E/" class="print-no-link">#倍增</a>
       
-        <a href="/tags/DP/" class="print-no-link">#DP</a>
+        <a href="/tags/RMQ/" class="print-no-link">#RMQ</a>
       
     </div>
   
@@ -369,8 +372,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>区间DP</div>
-      <div>http://example.com/2024/07/30/区间DP/</div>
+      <div>倍增</div>
+      <div>http://example.com/2024/08/15/倍增/</div>
     </div>
     <div class="license-meta">
       
@@ -382,7 +385,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年7月30日</div>
+          <div>2024年8月15日</div>
         </div>
       
       
@@ -414,9 +417,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/08/06/%E5%93%88%E5%B8%8C%E8%A1%A8/" title="哈希表">
+                      <a href="/2024/08/15/%E5%89%8D%E7%BC%80%E5%92%8C/" title="前缀和">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">哈希表</span>
+                        <span class="hidden-mobile">前缀和</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -424,8 +427,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/07/30/%E8%83%8C%E5%8C%85DP/" title="背包DP">
-                        <span class="hidden-mobile">背包DP</span>
+                      <a href="/2024/08/06/%E5%93%88%E5%B8%8C%E8%A1%A8/" title="哈希表">
+                        <span class="hidden-mobile">哈希表</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
