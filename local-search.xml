@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>最短路径算法</title>
+    <link href="/2024/08/23/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%AE%97%E6%B3%95/"/>
+    <url>/2024/08/23/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%AE%97%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<p>关于路径的概念，请参照<a class="btn" href="https://zhrleo.github.io/2024/07/30/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E7%A1%80/" title="图论基础">这篇博客</a>，本博客将以<a class="btn" href="https://www.luogu.com.cn/problem/P4779" title="P4779 【模板】单源最短路径（标准版）">例题1</a>和<a class="btn" href="https://www.luogu.com.cn/problem/P3371" title="P4779 【模板】单源最短路径（标准版）">例题2</a>来讲解各种最短路径算法（例题1和例题2是相同的题目，例题1的数据更强并且卡SPFA）。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>前缀和</title>
     <link href="/2024/08/15/%E5%89%8D%E7%BC%80%E5%92%8C/"/>
     <url>/2024/08/15/%E5%89%8D%E7%BC%80%E5%92%8C/</url>
