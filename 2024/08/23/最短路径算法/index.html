@@ -24,7 +24,7 @@
 <meta property="og:description" content="关于路径的概念，请参照这篇博客，本博客将以例题1和例题2来讲解各种最短路径算法（例题1和例题2是相同的题目，例题1的数据更强并且卡SPFA）。 Floyed多源最短路算法本质上是动态规划。 令$\operatorname{f}(i,j)$为节点i到节点j的最短路径，则有$$\operatorname{f}(i,j)&#x3D;\min{\operatorname{f}(i,k)+\operator">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-08-23T06:20:33.000Z">
-<meta property="article:modified_time" content="2024-08-27T06:11:21.142Z">
+<meta property="article:modified_time" content="2024-08-27T08:41:35.833Z">
 <meta property="article:author" content="zhrleo">
 <meta property="article:tag" content="图">
 <meta property="article:tag" content="DP">
@@ -243,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          2.3k 字
         
       </span>
     
@@ -254,7 +254,7 @@
         
         
         
-          17 分钟
+          20 分钟
         
       </span>
     
@@ -304,7 +304,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-08-27T14:11:21+08:00
+                    本文最后更新于 2024-08-27T16:41:35+08:00
                   
                   
 
@@ -359,6 +359,17 @@
 <h2 id="队列优化：SPFA单源最短路算法"><a href="#队列优化：SPFA单源最短路算法" class="headerlink" title="队列优化：SPFA单源最短路算法"></a>队列优化：SPFA单源最短路算法</h2><p>SPFA算法本质上就是用BFS来优化Bellman-Ford算法松弛的过程，时间复杂度为$O(k\operatorname{card}E)$，k的平均值为2，但是会退化为n，所以在OI中若没有负权边一般还是使用优先队列优化的Dijstra算法。</p>
 <p>参考代码：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">data</span><br>&#123;<br>    <span class="hljs-type">int</span> y, z;<br>&#125;;<br>queue&lt;<span class="hljs-type">int</span>&gt; q;<br>vector&lt;data&gt; g[<span class="hljs-number">100005</span>];<br><span class="hljs-type">bool</span> vis[<span class="hljs-number">100005</span>];<br><span class="hljs-type">int</span> n, m, s, dis[<span class="hljs-number">100005</span>];<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">char</span> <span class="hljs-type">const</span> *argv[])</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>, &amp;n, &amp;m, &amp;s);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; i++)<br>    &#123;<br>        <span class="hljs-type">int</span> u, v, w;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>, &amp;u, &amp;v, &amp;w);<br>        g[u].<span class="hljs-built_in">push_back</span>(&#123;v, w&#125;);<br>    &#125;<br>    <span class="hljs-built_in">memset</span>(dis, <span class="hljs-number">0x3f3f3f3f</span>, <span class="hljs-built_in">sizeof</span>(dis));<br>    dis[s] = <span class="hljs-number">0</span>, vis[s] = <span class="hljs-number">1</span>;<br>    q.<span class="hljs-built_in">push</span>(s);<br>    <span class="hljs-keyword">while</span> (!q.<span class="hljs-built_in">empty</span>())<br>    &#123;<br>        <span class="hljs-type">int</span> x = q.<span class="hljs-built_in">front</span>();<br>        q.<span class="hljs-built_in">pop</span>();<br>        vis[x] = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> i : g[x])<br>        &#123;<br>            <span class="hljs-keyword">if</span> (dis[i.y] &gt; dis[x] + i.z)<br>            &#123;<br>                dis[i.y] = dis[x] + i.z;<br>                <span class="hljs-keyword">if</span> (!vis[i.y])<br>                &#123;<br>                    vis[i.y] = <span class="hljs-number">1</span>;<br>                    q.<span class="hljs-built_in">push</span>(i.y);<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (dis[i] &gt;= <span class="hljs-number">0x3f3f3f3f</span>)<br>        &#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">31</span>) - <span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, dis[i]);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>例题1:32分</p>
+<p>例题2AC</p>
+<h2 id="判负环"><a href="#判负环" class="headerlink" title="判负环"></a>判负环</h2><h1 id="Johnson多源最短路算法"><a href="#Johnson多源最短路算法" class="headerlink" title="Johnson多源最短路算法"></a>Johnson多源最短路算法</h1><p>我们换一道<a class="btn" target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P5905" title="P5905 【模板】全源最短路（Johnson）">例题</a></p>
+<p>这一道题明显用Floyed算法会超时，同时既卡了Dijstra算法的不能处理负权，又把SPFA算法卡退化了，也就是说，我们要研究出一种能处理负权的Dijstra算法。</p>
+<p>Johnson算法应运而生。</p>
+<p>我们要处理Dijstra算法无法处理负权环的问题，无非就是把所有负权全部都变成非负权。</p>
+<p>有一种想法，就是将所有边的边权都加上同样的一个正数，但是这样做是错的。</p>
+<p>因为这种想法会使每一条路径的权值都加上这条路径经过的边数与所取的正数之积，使路径经过的边数也成为了考量最短路径的因素之一，而众所周知，边数多的路径不一定权值之和就大，于是这种想法就被hack掉了。</p>
+<p>所以我们需要寻找一种新的处理边权的方式。</p>
+<p>我们可以建一个源点，同时使源点与原图中的每一个点都建立一条边权为0的边。</p>
+
                 
               </div>
             
@@ -455,6 +466,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/09/22/JOI2007%E9%A2%98%E8%A7%A3/" title="JOI2007题解">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JOI2007题解</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
